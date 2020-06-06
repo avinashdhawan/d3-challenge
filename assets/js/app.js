@@ -1,4 +1,4 @@
-// @TODO: YOUR CODE HERE! 
+//Set Frame for Graph 
 var svgWidth = 800;
 var svgHeight = 600;
 
@@ -20,8 +20,6 @@ var svg = d3.select("#scatter")
 
 var chartGroup = svg.append("g")
   .attr("transform", `translate(${margin.left}, ${margin.top})`);
-
-
 
 // Load data from US Census .csv file
 d3.csv("assets/data/data.csv").then(function(censusData) {
@@ -45,8 +43,6 @@ d3.csv("assets/data/data.csv").then(function(censusData) {
     var yLinearScale = d3.scaleLinear()
       .domain([d3.min(censusData, d => d.healthcare), d3.max(censusData, d => d.healthcare)])
       .range([height, 0]);
-
-
       
     // Create x and y axis functions
     
