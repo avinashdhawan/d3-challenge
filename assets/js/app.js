@@ -104,7 +104,8 @@ d3.csv("assets/data/data.csv").then(function(censusData) {
       .append("text")
       .text(function(d) { return d.abbr; })
       .attr("dx", d => xLinearScale(d.poverty))
-      .attr("dy", d => yLinearScale(d.healthcare) + 10 / 2.5)
+      // Center the state name in cell (10/2.5)
+      .attr("dy", d => yLinearScale(d.healthcare) + 10/2.5)
       .attr("font-size", 10)
       .attr("class" , "stateText")
 
@@ -117,22 +118,19 @@ d3.csv("assets/data/data.csv").then(function(censusData) {
           toolTip.hide(data);
       });
 
-
-
-
  // Create axes labels
  chartGroup.append("text")
   .attr("transform", "rotate(-90)")
-  .attr("y", 0 - margin.left + 40)
-  .attr("x", 0-(height / 2))
+  .attr("y", 20 - margin.left)
+  .attr("x", -60-(height / 2))
 
   .attr("class", "axisText")
   .text("Lacks Healthcare (%)");
 
 chartGroup.append("text")
-  .attr("transform", `translate(${width / 2}, ${height + margin.top + 30})`)
-  .attr("y", 0 - margin.left + 40)
-  .attr("x", 0-(height / 2))
+  .attr("transform", `translate(${-20 + width / 2}, ${height + 50})`)
+  // .attr("y", 0 - margin.left)
+  // .attr("x", 120-(height / 2))
   .attr("class", "axisText")
   .text("In Poverty (%)");
 }).catch(function(error) {
